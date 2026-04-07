@@ -43,7 +43,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 ---
 
 ## -4/6/2026- **PEAK**  
-**Scenario:** Unusual activity originating from the private network 10.x.x.x in the logs on the application development server. 
+**Scenario:** Unusual activity originating in the logs on the application development server. 
 **What I did:**  
 - Analyzed server logs(syslog, auth.log, auditd logs, apache logs) to identify malicious requests  
 - Traced attacker’s IP, user-agent(Hydra), and exploitation path
