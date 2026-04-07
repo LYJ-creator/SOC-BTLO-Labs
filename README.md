@@ -15,7 +15,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 ---
 
 ## Tools & Techniques Used
-- **SIEM Platforms:** Splunk, ELK Stack  
+- **SIEM Platforms:** Splunk, Elastic  
 - **Log Sources:** Sysmon, Windows Event Logs, Web server logs, PCAP  
 - **Network Analysis:** Wireshark, Zeek  
 - **Forensics:** Autopsy, RegRipper, Strings, Hashing tools  
