@@ -39,6 +39,29 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 ---
 
 # **Investigation Reports**
+---
+
+## **-4/7/2026-PEAK2**  
+**Scenario:** This investigation about the activities of an attacker built reverse webshell on Mountain Top Solutions' Linux server. 
+**What I did:**  
+- Analyzed server logs(syslog, auth.log, auditd logs, apache logs) to identify malicious requests  
+- Traced attacker’s IP, user-agent(Hydra), and exploitation path
+- Identified local privilege escalation enumeration.
+- Identified unauthorized root SSH log on system.
+- Identified unauthorized download and execution payloads.
+- Identified Start PHP built-in web sever
+- Identified FTP connections with attacker's IP
+- Identified file exfiltration.
+- Mapped attacker behavior to MITRE (T1082,T1083,T1059,T1083,T1078,T1041,T1105,T1505.003)  
+**Findings:**  
+- Privilege escalation. 
+- Attacker deployed a reverse PHP web shell and exfiltrate creticle files. 
+**Tools:** Wireshark，Sublime
+**Lessons Learned:**  
+- Restrict SSH to VPN or jump Host
+- Deploy EDR monitoring on hosts.
+- Implement outbound firewall rules.
+- Monitor for reverse connections (FTP, high ports).
 
 ---
 
@@ -54,9 +77,9 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - Identified Data Destruction.
 - Mapped attacker behavior to MITRE (T1110,T1105,T1204,T1083,T1041,T1485)  
 **Findings:**  
-- Server compromised via vulnerable upload endpoint  
-- Attacker deployed a PHP web shell and modified site content  
-**Tools:** Elatic  
+- Attacker implement malware Hydra to log on system.
+- Attacker escalate privilege and upload files to extranet.
+**Tools:** Elatic
 **Lessons Learned:**  
 - Enforce MFA for SSH.
 - Restrict SSH to VPN or jump host.
