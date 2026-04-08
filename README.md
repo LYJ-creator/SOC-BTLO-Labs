@@ -42,7 +42,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 ---
 
 ## **-4/7/2026-PEAK2**  
-**Scenario:** This investigation about the activities of an attacker built reverse webshell on Mountain Top Solutions' Linux server.  
+**Scenario:** This investigation about the activities of an attacker built reverse webshell on Mountain Top Solutions' Linux server.   
 **What I did:**  
 - Analyzed server logs(syslog, auth.log, auditd logs, apache logs) to identify malicious requests  
 - Traced attacker’s IP, user-agent(Hydra), and exploitation path
@@ -52,11 +52,11 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - Identified Start PHP built-in web sever
 - Identified FTP connections with attacker's IP
 - Identified file exfiltration.
-- Mapped attacker behavior to MITRE (T1082,T1083,T1059,T1083,T1078,T1041,T1105,T1505.003)  
+- Mapped attacker behavior to MITRE (T1082,T1083,T1059,T1083,T1078,T1041,T1105,T1505.003)   
 **Findings:**  
 - Privilege escalation. 
-- Attacker deployed a reverse PHP web shell and exfiltrate creticle files. 
-**Tools:** Wireshark，Sublime
+- Attacker deployed a reverse PHP web shell and exfiltrate creticle files.   
+**Tools:** Wireshark，Sublime  
 **Lessons Learned:**  
 - Restrict SSH to VPN or jump Host
 - Deploy EDR monitoring on hosts.
@@ -66,7 +66,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 ---
 
 ## **-4/6/2026-PEAK**  
-**Scenario:** Unusual activity originating in the logs on the application development server.  
+**Scenario:** Unusual activity originating in the logs on the application development server.    
 **What I did:**  
 - Analyzed server logs(syslog, auth.log, auditd logs, apache logs) to identify malicious requests  
 - Traced attacker’s IP, user-agent(Hydra), and exploitation path
@@ -75,11 +75,11 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - Identified exploitation of Sudo(CVE-2021-3156)
 - Identified file exfiltration to ngrok.io.
 - Identified Data Destruction.
-- Mapped attacker behavior to MITRE (T1110,T1105,T1204,T1083,T1041,T1485)  
+- Mapped attacker behavior to MITRE (T1110,T1105,T1204,T1083,T1041,T1485)    
 **Findings:**  
 - Attacker implement malware Hydra to log on system.
-- Attacker escalate privilege and upload files to extranet.
-**Tools:** Elatic
+- Attacker escalate privilege and upload files to extranet.  
+**Tools:** Elatic  
 **Lessons Learned:**  
 - Enforce MFA for SSH.
 - Restrict SSH to VPN or jump host.
