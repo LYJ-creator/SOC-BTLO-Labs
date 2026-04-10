@@ -43,7 +43,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 ---
 
 ## **-4/9/2026-HASHISH**  
-**Scenario:** Confidential Administrator documents were stolen. Invesigate how the attacker abused local privilege escalation and credential dumping to access sensitive files. 
+**Scenario:** Confidential Administrator documents were stolen. Invesigate how the attacker abused local privilege escalation and credential dumping to access sensitive files.  
 **What I did:**  
 - Checked recent files, event logs (access denied).
 - Reviewed PowerShell history → found Invoke-HiveNightmare.ps1.
@@ -52,12 +52,12 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - Used Impacket secretsdump to extract NTLM hashes.
 - Used psexec.py + Pass‑the‑Hash to escalate to SYSTEM.
 - Located stolen document in Administrator’s Documents folder.
-- Identified writable share via net share.
+- Identified writable share via net share.  
 **Findings:**  
 - Local privilege escalation via HiveNightmare.
 - NTLM hash extracted → SYSTEM access via psexec.
 - Administrator password recovered from stolen file.   
-**Tools:** PowerShell, Impacket (secretsdump, psexec)  
+**Tools:** PowerShell, Impacket (secretsdump, psexec)   
 **Lessons Learned:**  
 - Restrict ACLs on registry hives.
 - Monitor PowerShell history + script execution.
