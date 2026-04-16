@@ -40,7 +40,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 # **Investigation Reports**
 ---
-## **-4/12/2026-Rekcod**  
+## 12.**Rekcod**  
 **Scenario:** It is easy to casually pull a docker image from docker hub and run it. But can you trust them? What if you need to create a Dockerfile from an image?  
 **What I did:**  
 - Enumerated all local Docker images and validated the total count.
@@ -64,7 +64,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 ---
 
-## **-4/10/2026-SAM**  
+## 11.**SAM**  
 **Scenario:** User executed a malicious HTA file leading to remote code execution, reverse shell, and credential theft via SAM/SYSTEM hive exfiltration.   
 **What I did:**  
 - Reviewed PCAP → identified reverse shell from 172.16.0.4 → 172.16.0.5:80
@@ -91,7 +91,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 ---
 
-## **-4/9/2026-HASHISH**  
+## 10. **HASHISH**  
 **Scenario:** Confidential Administrator documents were stolen. Invesigate how the attacker abused local privilege escalation and credential dumping to access sensitive files.  
 **What I did:**  
 - Checked recent files, event logs (access denied).
@@ -115,7 +115,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 ---
 
-## **-4/7/2026-PEAK2**  
+## 9. **PEAK2**  
 **Scenario:** This investigation about the activities of an attacker built reverse webshell on Mountain Top Solutions' Linux server.   
 **What I did:**  
 - Analyzed server logs(syslog, auth.log, auditd logs, apache logs) to identify malicious requests  
@@ -139,7 +139,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 ---
 
-## **-4/6/2026-PEAK**  
+## 8. **PEAK**  
 **Scenario:** Unusual activity originating in the logs on the application development server.    
 **What I did:**  
 - Analyzed server logs(syslog, auth.log, auditd logs, apache logs) to identify malicious requests  
@@ -162,7 +162,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 ---
 
-## 1. **Defaced (Enterprise)**  
+## 7. **Defaced (Enterprise)**  
 **Scenario:** Corporate web server defacement incident.  
 **What I did:**  
 - Analyzed web server logs to identify malicious HTTP requests  
@@ -178,7 +178,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 ---
 
-## 2. **IR_Ozarks**  
+## 6. **IR_Ozarks**  
 **Scenario:** Suspicious PowerShell execution on a workstation.  
 **What I did:**  
 - Investigated Sysmon logs for encoded PowerShell commands  
@@ -193,7 +193,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 ---
 
-## 3. **MiddleMayhem**  
+## 5. **MiddleMayhem**  
 **Scenario:** Multi-stage phishing → credential theft → lateral movement.  
 **What I did:**  
 - Reconstructed phishing email delivery path  
@@ -222,7 +222,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 ---
 
-## 5. **Piggy**  
+## 3. **Piggy**  
 **Scenario:** Unauthorized privilege escalation attempt.  
 **What I did:**  
 - Investigated Windows Event Logs for privilege abuse  
@@ -236,7 +236,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 ---
 
-## 6. **SOC Alpha I / II**  
+## 2. **SOC Alpha I / II**  
 **Scenario:** Multi-part SOC analyst challenge simulating real MSSP workflow.  
 **What I did:**  
 - Performed alert triage on multiple log sources  
@@ -250,7 +250,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 ---
 
-## 7. **The Walking Packets (Enterprise)**  
+## 1. **The Walking Packets (Enterprise)**  
 **Scenario:** Large-scale network compromise with lateral movement.  
 **What I did:**  
 - Investigated PCAP for scanning, SMB exploitation, and data exfiltration  
