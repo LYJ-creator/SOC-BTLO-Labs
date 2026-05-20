@@ -41,7 +41,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 # **Investigation Reports**
 ---
 ## 14.**Phishy V2**  
-**Scenario:** It is Your job to investigate a website and find out everything you can about the site, the actor responsible, and perform threat intelligence work on the operator of phishing site. [A malicious URL provided.]
+**Scenario:** It is Your job to investigate a website and find out everything you can about the site, the actor responsible, and perform threat intelligence work on the operator of phishing site. [A malicious URL provided.]  
 **What I did:**  
 - Visited and Followed the instruction to fill out and submit fake financial Data.
 - Disvocered the xBananaV3 kit at /var/www/html.
@@ -57,8 +57,8 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - Additional attacker‑controlled addresses appear throughout the kit, including noreply@r00t.xBanana and rzlt290r@gmail.com.
 - logs.txt records multiple visits from internal lab IPs and two external IPs: 72.229.28.185 — testing from New York City. And 14.154.211.11 — victim from Shenzhen, CN, submitting full credentials.
 - the attacker's signiture: SIGNED BY ABILITY - ABLE GOD in Email.php
-- Admin panel credential: tpee
-**Tools:** xBananaV3, cyberchef, grep/awk, unzip, base64 decoding,Browser developer tools.
+- Admin panel credential: tpee  
+**Tools:** xBananaV3, cyberchef, grep/awk, unzip, base64 decoding,Browser developer tools.  
 **Lessons Learned:**
 - Multiple obfuscation: 1.Base64 encoded many times for PHP file. 2. Polyglot PNG+ZIP files. 3.Hidden directories and antibot filters.
 - Locating data staging path can speed up the trage process and help define the scope for notifying.
@@ -71,7 +71,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 **What I did:**  
 - Analyzed Sysmon to figure out the malicious script downloaded and executed.
 - Analyzed osquery logs to tell the scheduled task, new account added, andregistry motification.
-- Searched and Matched the behaviours with the pattern of Koadic post exploitation tool.
+- Searched and Matched the behaviours with the pattern of Koadic post exploitation tool.  
 **Findings:**  
 - Downloaded a malicious script using bitsadmin.exe.
 - Script executed via wscript，rundll32 and mshtml.
@@ -79,8 +79,8 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - Malicious Run key added to maintain persistence.
 - osquery logs show modification of the Schedule service key.
 - Attacker retrieved additional payloads from 192.168.1.14:9997 with ActiveX and using eval() to execute response TEXT as commandline from target machine.
-- Use of MSHTA, ActiveX, eval(), and JavaScript stagers matches Koadic behavior.
-**Tools:** Elastic，Sysmon logs, OSquery logs
+- Use of MSHTA, ActiveX, eval(), and JavaScript stagers matches Koadic behavior.  
+**Tools:** Elastic，Sysmon logs, OSquery logs  
 **Lessons Learned:**
 -- Gap：
 - Sysmon only captured EventID 1, missing process creation, registry, and network events.
