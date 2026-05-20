@@ -53,9 +53,9 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - The kit includes custom antibot logic blocking user agents containing the string “google”.
 - logs.txt records connection history   
 - Discovered credential data stored at /var/www/html/xBananaV3/Rezult/, including Victim Rachale Cole's full financial data
-- exfiltration script, email.php, sends harvested credentials to banklogs1@gmail.com using a hard‑coded mail function.
-- Additional attacker‑controlled addresses appear throughout the kit, including noreply@r00t.xBanana and rzlt290r@gmail.com.
-- logs.txt records multiple visits from internal lab IPs and two external IPs: 72.229.28.185 — testing from New York City. And 14.154.211.11 — victim from Shenzhen, CN, submitting full credentials.
+- exfiltration script, email.php, sends harvested credentials to banklogs1@gmail[.]com using a hard‑coded mail function.
+- Additional attacker‑controlled addresses appear throughout the kit, including noreply@r00t[.]xBanana and rzlt290r@gmail[.]com.
+- logs.txt records multiple visits from internal lab IPs and two external IPs: 72[.]229[.]28[.]185 — testing from New York City. And 14[.]154[.]211[.]11 — victim from Shenzhen, CN, submitting full credentials.
 - the attacker's signiture: SIGNED BY ABILITY - ABLE GOD in Email.php
 - Admin panel credential: tpee  
 **Tools:** xBananaV3, cyberchef, grep/awk, unzip, base64 decoding,Browser developer tools.  
