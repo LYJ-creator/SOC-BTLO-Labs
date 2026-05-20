@@ -40,6 +40,61 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 # **Investigation Reports**
 ---
+## 14.**Phishy V2**  
+**Scenario:** It is Your job to investigate a website and find out everything you can about the site, the actor responsible, and perform threat intelligence work on the operator of phishing site. [A malicious URL provided.]
+**What I did:**  
+- Visited and Followed the instruction to fill out and submit fake financial Data.
+- Disvocered the xBananaV3 kit at /var/www/html.
+- Filtered email in the path of the xBananaV3 kit, and found sending email .
+- Identify unzip embeded zip file from logo.png.   
+- Parsed maltiple base64 encoded email.php and index.php.  
+**Findings:**
+- The phishing site is hosted on bluegardeningsupplies.co.uk, running the xBananaV3 phishing kit.
+- The kit includes custom antibot logic blocking user agents containing the string “google”.
+- logs.txt records connection history   
+- Discovered credential data stored at /var/www/html/xBananaV3/Rezult/, including Victim Rachale Cole's full financial data
+- exfiltration script, email.php, sends harvested credentials to banklogs1@gmail.com using a hard‑coded mail function.
+- Additional attacker‑controlled addresses appear throughout the kit, including noreply@r00t.xBanana and rzlt290r@gmail.com.
+- logs.txt records multiple visits from internal lab IPs and two external IPs: 72.229.28.185 — testing from New York City. And 14.154.211.11 — victim from Shenzhen, CN, submitting full credentials.
+- the attacker's signiture: SIGNED BY ABILITY - ABLE GOD in Email.php
+- Admin panel credential: tpee
+**Tools:** xBananaV3, cyberchef, grep/awk, unzip, base64 decoding,Browser developer tools.
+**Lessons Learned:**
+- Multiple obfuscation: 1.Base64 encoded many times for PHP file. 2. Polyglot PNG+ZIP files. 3.Hidden directories and antibot filters.
+- Locating data staging path can speed up the trage process and help define the scope for notifying.
+- The kit’s own logs.txt revealed. This highlights the importance of reviewing attacker‑generated logs.
+- Exfiltration mechanism was a basic PHP mail() function.
+
+---
+## 13.**PE**  
+**Scenario:** We got you the sysmon logs from the compromised Windows endpoint. But it seems like not all the events are captured in the Sysmon. Fortunately, the osqueryd service was running in the endpoint and results were stored. Answer the below questions by analyzing the osquery results and provided sysmon logs.
+**What I did:**  
+- Analyzed Sysmon to figure out the malicious script downloaded and executed.
+- Analyzed osquery logs to tell the scheduled task, new account added, andregistry motification.
+- Searched and Matched the behaviours with the pattern of Koadic post exploitation tool.
+**Findings:**  
+- Downloaded a malicious script using bitsadmin.exe.
+- Script executed via wscript，rundll32 and mshtml.
+- Attacker created a new local user btlo.
+- Malicious Run key added to maintain persistence.
+- osquery logs show modification of the Schedule service key.
+- Attacker retrieved additional payloads from 192.168.1.14:9997 with ActiveX and using eval() to execute response TEXT as commandline from target machine.
+- Use of MSHTA, ActiveX, eval(), and JavaScript stagers matches Koadic behavior.
+**Tools:** Elastic，Sysmon logs, OSquery logs
+**Lessons Learned:**
+-- Gap：
+- Sysmon only captured EventID 1, missing process creation, registry, and network events.
+- Osquery compensated, but endpoint lacked full telemetry.
+- No restriction on bitsadmin usage.
+- No monitoring of MSHTA / rundll32 execution.
+- No alerting on new local account creation.
+-- Remediation Recommendations：
+- Deploy full Sysmon configuration (SwiftOnSecurity or Olaf Hartong).
+- Enforce application control to block MSHTA and legacy scripting engines.
+- Implement network filtering to block unauthorized outbound HTTPs.
+
+---
+
 ## 12.**Rekcod**  
 **Scenario:** It is easy to casually pull a docker image from docker hub and run it. But can you trust them? What if you need to create a Dockerfile from an image?  
 **What I did:**  
