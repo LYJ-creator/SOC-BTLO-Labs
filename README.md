@@ -78,7 +78,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - Attacker created a new local user btlo.
 - Malicious Run key added to maintain persistence.
 - osquery logs show modification of the Schedule service key.
-- Attacker retrieved additional payloads from 192.168.1.14:9997 with ActiveX and using eval() to execute response TEXT as commandline from target machine.
+- Attacker retrieved additional payloads from 192[.]168[.]1[.]14:9997 with ActiveX and using eval() to execute response TEXT as commandline from target machine.
 - Use of MSHTA, ActiveX, eval(), and JavaScript stagers matches Koadic behavior.  
 **Tools:** Elastic，Sysmon logs, OSquery logs  
 **Lessons Learned:**  
