@@ -81,17 +81,17 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - Attacker retrieved additional payloads from 192.168.1.14:9997 with ActiveX and using eval() to execute response TEXT as commandline from target machine.
 - Use of MSHTA, ActiveX, eval(), and JavaScript stagers matches Koadic behavior.  
 **Tools:** Elastic，Sysmon logs, OSquery logs  
-**Lessons Learned:**
--- Gap：
-- Sysmon only captured EventID 1, missing process creation, registry, and network events.
-- Osquery compensated, but endpoint lacked full telemetry.
-- No restriction on bitsadmin usage.
-- No monitoring of MSHTA / rundll32 execution.
-- No alerting on new local account creation.
--- Remediation Recommendations：
-- Deploy full Sysmon configuration (SwiftOnSecurity or Olaf Hartong).
-- Enforce application control to block MSHTA and legacy scripting engines.
-- Implement network filtering to block unauthorized outbound HTTPs.
+**Lessons Learned:**  
+- Gap：
+  - Sysmon only captured EventID 1, missing process creation, registry, and network events.
+  - Osquery compensated, but endpoint lacked full telemetry.
+  - No restriction on bitsadmin usage.
+  - No monitoring of MSHTA / rundll32 execution.
+  - No alerting on new local account creation.  
+- Remediation Recommendations： 
+  - Deploy full Sysmon configuration (SwiftOnSecurity or Olaf Hartong).
+  - Enforce application control to block MSHTA and legacy scripting engines.
+  - Implement network filtering to block unauthorized outbound HTTPs.
 
 ---
 
