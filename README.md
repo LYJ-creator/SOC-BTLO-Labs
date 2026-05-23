@@ -46,17 +46,17 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - Visited and Followed the instruction to fill out and submit fake financial Data.
 - Disvocered the xBananaV3 kit at /var/www/html.
 - Filtered email in the path of the xBananaV3 kit, and found sending email .
-- Identify unzip embeded zip file from logo.png.   
+- Identified and unziped embeded files from logo.png.   
 - Parsed maltiple base64 encoded email.php and index.php.  
 **Findings:**
 - The phishing site is hosted on bluegardeningsupplies.co.uk, running the xBananaV3 phishing kit.
 - The kit includes custom antibot logic blocking user agents containing the string “google”.
 - logs.txt records connection history   
 - Discovered credential data stored at /var/www/html/xBananaV3/Rezult/, including Victim Rachale Cole's full financial data
-- exfiltration script, email.php, sends harvested credentials to banklogs1@gmail[.]com using a hard‑coded mail function.
+- Exfiltration script, email.php, sends harvested credentials to banklogs1@gmail[.]com using a hard‑coded mail function.
 - Additional attacker‑controlled addresses appear throughout the kit, including noreply@r00t[.]xBanana and rzlt290r@gmail[.]com.
 - logs.txt records multiple visits from internal lab IPs and two external IPs: 72[.]229[.]28[.]185 — testing from New York City. And 14[.]154[.]211[.]11 — victim from Shenzhen, CN, submitting full credentials.
-- the attacker's signiture: SIGNED BY ABILITY - ABLE GOD in Email.php
+- The attacker's signiture: SIGNED BY ABILITY - ABLE GOD in Email.php
 - Admin panel credential: tpee  
 **Tools:** xBananaV3, cyberchef, grep/awk, unzip, base64 decoding,Browser developer tools.  
 **Lessons Learned:**
@@ -77,7 +77,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - Script executed via wscript，rundll32 and mshtml.
 - Attacker created a new local user btlo.
 - Malicious Run key added to maintain persistence.
-- osquery logs show modification of the Schedule service key.
+- Osquery logs show modification of the Schedule service key.
 - Attacker retrieved additional payloads from 192[.]168[.]1[.]14:9997 with ActiveX and using eval() to execute response TEXT as commandline from target machine.
 - Use of MSHTA, ActiveX, eval(), and JavaScript stagers matches Koadic behavior.  
 **Tools:** Elastic，Sysmon logs, OSquery logs  
