@@ -59,7 +59,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - Gap:
 - Short user training as a way to bring awareness to common phishing and spearphishing techniques and how to raise suspicion for potentially malicious events.
 - Fail to enforce least privilege principles
-**Remediation Recommendations：**
+- Remediation Recommendations：
 - Suspend the account of ricksanchez and reset credential.
 - Containing the infected machine from any connection and duplicating for analysing and eliminating the malicious files at "C:/Windows/Temp/" on Desktop1.
 - Deleting the schdduled task named "Microsoft Teams Updater" on Desktop1.
