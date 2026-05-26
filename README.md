@@ -41,7 +41,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 # **Investigation Reports**
 ---
 ## 15.**Splunk IT**  
-**Scenario:** One of the employees clicked on a malicious link and got the endpoint compromised. After executing malicious files and getting a foothold, the attacker compromised the AD by dumping sensitive information.
+**Scenario:** One of the employees clicked on a malicious link and got the endpoint compromised. After executing malicious files and getting a foothold, the attacker compromised the AD by dumping sensitive information.  
 **What I did:**  
 - Identifing the payload of the malicious link in Email. 
 - Analyzing Sysmon to reconstruct macro execution and child process activity
