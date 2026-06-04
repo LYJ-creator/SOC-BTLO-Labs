@@ -54,7 +54,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - Virus alert: "W32/Swrort.C!tr" 
 - Payloads: agent.php, 3791.exe
 - Initial access: Attacker gained Joomla administrator credentials via brute-force attack (100+ POST attempts) from 23.22.63.114.
-- Execute chain：  agent.php --> php-cgi.exe --> cmd.exe --> 3791.exe
+- Execution chain：  agent.php --> php-cgi.exe --> cmd.exe --> 3791.exe
 - Attacker's IP address: 40[.]80[.]148[.]42; 23[.]22[.]63[.]114
 - Brute force for admin account at Joomla.
 - Payload hash: EC78C938D8453739CA2A370B9C275971EC46CAF6E479DE2B2D04E97CC47FA45D  
