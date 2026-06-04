@@ -41,7 +41,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 # **Investigation Reports**
 ---
 ## 16.**Drilldown**  
-**Scenario:** WayneCorpInc does not use Amazon Web Services. When the threat hunting team detected outbound connections to multiple EC2 instances from an internal host, an investigation was launched to determine the scope of compromise and provide actionable intelligence to the incident response team.
+**Scenario:** WayneCorpInc does not use Amazon Web Services. When the threat hunting team detected outbound connections to multiple EC2 instances from an internal host, an investigation was launched to determine the scope of compromise and provide actionable intelligence to the incident response team.  
 **What I did:**  
 - Traced the EC2 traffic connected to internal hosts. 
 - Analyzed Sysmon event logs to identify the process responsible for initiating the connections.
