@@ -40,6 +40,41 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 # **Investigation Reports**
 ---
+## 16.**Drilldown**  
+**Scenario:** WayneCorpInc does not use Amazon Web Services. When the threat hunting team detected outbound connections to multiple EC2 instances from an internal host, an investigation was launched to determine the scope of compromise and provide actionable intelligence to the incident response team.
+**What I did:**  
+- Traced the EC2 traffic connected to internal hosts. 
+- Analyzed Sysmon event logs to identify the process responsible for initiating the connections.
+- Investigated the reputation of payload on VirusTotal.
+- Identified suspicious IP addresses associated with file upload and C2 activity.
+- Restructured the full attack timeline based on Sysmon and Splunk logs.
+- Mapped observed attacker's behaviors to the Mitre Attack framework.
+- Documented remediation recommandations for the incident response team.  
+**Findings:**  
+- Virus alert: "W32/Swrort.C!tr" 
+- Payloads: agent.php, 3791.exe
+- Initial access: Attacker gained Joomla administrator credentials via brute-force attack (100+ POST attempts) from 23.22.63.114.
+- Execute chain：  agent.php --> php-cgi.exe --> cmd.exe --> 3791.exe
+- Attacker's IP address: 40[.]80[.]148[.]42; 23[.]22[.]63[.]114
+- Brute force for admin account at Joomla.
+- Payload hash: EC78C938D8453739CA2A370B9C275971EC46CAF6E479DE2B2D04E97CC47FA45D  
+**Tools:** Splunk, Sysmon logs, Virustotal  
+**Lessons Learned:**  
+- **Gap**:  
+- The infected host lacked adequate endpoint protection.
+- No alarm about unauthorized connection from AWS cloud service.
+- Suricata does not alarm about the webshell and trogen upload transfer.
+- The Joomla administration panel was publicly accessible.  
+- **Remediation Recommendations：**  
+- Isolating the affected server.
+- blocking the attacker's IP addresses at the firewall.
+- removing malicious payloads.
+- reset Joomla administrator credentials.
+- Update Suricata rules to detect webshell activity and trojan C2 patterns.
+- Establish a monitoring baseline to alert on unauthorized cloud service (AWS/EC2) connections.  
+
+---
+---
 ## 15.**Splunk IT**  
 **Scenario:** One of the employees clicked on a malicious link and got the endpoint compromised. After executing malicious files and getting a foothold, the attacker compromised the AD by dumping sensitive information.  
 **What I did:**  
