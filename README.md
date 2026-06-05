@@ -51,7 +51,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 - Mapped observed attacker's behaviors to the Mitre Attack framework.
 - Documented remediation recommandations for the incident response team.  
 **Findings:**  
-- Virus alert: "W32/Swrort.C!tr" 
+- Virus detected: virus "W32/Swrort.C!tr" uploaded 3791.exe.
 - Payloads: agent.php, 3791.exe
 - Initial access: Attacker gained Joomla administrator credentials via brute-force attack (100+ POST attempts) from 23.22.63.114.
 - Execution chain：  agent.php --> php-cgi.exe --> cmd.exe --> 3791.exe
