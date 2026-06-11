@@ -40,6 +40,43 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 
 # **Investigation Reports**
 ---
+## 17.**Pika.boo**  
+**Scenario:** ToT, a company, was developing a top-secret cloud project. Their lead developer, Will (who always uses GitHub), went on Halloween vacation but received feedback on his website, where he’d added his email for feedback. Needing someone to check his inbox, he sent his credentials to a colleague, Michelle. A few hours later, the entire cloud environment vanished. Will's in hot water for sharing his credentials—never share yours! Can you uncover how the environment got AWSaultAD?
+**What I did:**  
+- Used browser developer tools to extract Will's email address, then ran 'gitdumper.sh' to dump the exposed '/.git/' directory and recover 'thirdPartykeys.txt' containing AWS credentials.
+- Search Splunk for EventCode=1 and Internet Explorer to trace the execution chain of 'Feedback.exe' and identify the compromised account 'mgidson'. 
+- Queried CloudTrail logs 'eventName=RunInstances' to identify the attacker's AWS instance creation and pivot IP '10.0.1.126'.
+- Filtered EventCode=4768 with 'Pre_Authentication_type=0' to confirm As-rep Roasting against 'pika.boo' and trace subsequent lateral movement to Mechine-1 and the DC.
+- Decoded Base64-encoded powershell commands to reveal credential search, database exfiltration via Pastebin API and the final ‘TerminateInstances' call that destroyed six EC2 instances.
+**Findings:**  
+- Gained access key of Thirdpartyvendor from Git directory.
+- Feedback.exe downloaded from Email with a HTTP request.
+- Account mgibson on Machine-2 was compromised after running feedback.exe-->cmd.exe.
+- Attacker connected to AWS from 139.162.53.206 with the account 'thirdpartyvendor' and An AWS instance was created, private IP is 10.0.1.126.
+- SSH Lateral movement to 'john@10.0.1.133' from Mechine-1.
+- Bitsadmin.exe downloaded 101Dump.txt form 10.0.1.133:8000
+- Exfiltrated DB file 'Pwn3d_DB' via Pastebin API.
+- Executed a powershell commanline to present "Kaboom!! Happy Halloween"
+- Terminated 6 AWS instances
+**Tools:** Splunk, Sysmon logs, gitdumper.sh, Windows events logs. 
+**Lessons Learned:**  
+- **Gap**:  
+- The website misconfigured to expose git directory.
+- Weak endpoints protection.
+- Lacking anti-phishing awareness.
+- Pre_authentication disabled on pika.boo.
+- Account 'thirdpartyvendor' had permissions to create and terminate instances on AWS.
+- No egress filtering — Pastebin POST went undetected
+- **Remediation Recommendations：**
+- Deploy Anti-virus agent to protect machines from malicious attachemnts.
+- Apply IAM least privilege and conduct periodic entitlement review.
+- Setiting the preauthentication enabled by default and monitoring the event=4768 with Pre_authentication_Type=0.
+- Enable AES kerberos encryption for credentials.
+- Block '/.git/' acces via server config and audit all repositories for exposed secrets.
+- Annual Anti-Phishing training.
+
+---
+---
 ## 16.**Drilldown**  
 **Scenario:** WayneCorpInc does not use Amazon Web Services. When the threat hunting team detected outbound connections to multiple EC2 instances from an internal host, an investigation was launched to determine the scope of compromise and provide actionable intelligence to the incident response team.  
 **What I did:**  
