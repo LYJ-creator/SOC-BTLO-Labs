@@ -45,16 +45,16 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 **What I did:**  
 - Used browser developer tools to extract Will's email address, then ran 'gitdumper.sh' to dump the exposed '/.git/' directory and recover 'thirdPartykeys.txt' containing AWS credentials.
 - Search Splunk for EventCode=1 and Internet Explorer to trace the execution chain of 'Feedback.exe' and identify the compromised account 'mgidson'. 
-- Queried CloudTrail logs 'eventName=RunInstances' to identify the attacker's AWS instance creation and pivot IP '10.0.1.126'.
+- Queried CloudTrail logs 'eventName=RunInstances' to identify the attacker's AWS instance creation and pivot IP '10[.]0[.]1[.]126'.
 - Filtered EventCode=4768 with 'Pre_Authentication_type=0' to confirm As-rep Roasting against 'pika.boo' and trace subsequent lateral movement to Mechine-1 and the DC.
 - Decoded Base64-encoded powershell commands to reveal credential search, database exfiltration via Pastebin API and the final ‘TerminateInstances' call that destroyed six EC2 instances.  
 **Findings:**  
 - Gained access key of Thirdpartyvendor from Git directory.
 - Feedback.exe downloaded from Email with a HTTP request.
 - Account mgibson on Machine-2 was compromised after running feedback.exe-->cmd.exe.
-- Attacker connected to AWS from 139.162.53.206 with the account 'thirdpartyvendor' and An AWS instance was created, private IP is 10.0.1.126.
-- SSH Lateral movement to 'john@10.0.1.133' from Mechine-1.
-- Bitsadmin.exe downloaded 101Dump.txt form 10.0.1.133:8000
+- Attacker connected to AWS from 139[.]162[.]53[.]206 with the account 'thirdpartyvendor' and An AWS instance was created, private IP is 10[.]0[.]1[.]126.
+- SSH Lateral movement to 'john@10[.]0[.]1[.]133' from Mechine-1.
+- Bitsadmin.exe downloaded 101Dump.txt form 10[.]0[.]1[.]133[:]8000
 - Exfiltrated DB file 'Pwn3d_DB' via Pastebin API.
 - Executed a powershell commanline to present "Kaboom!! Happy Halloween"
 - Terminated 6 AWS instances  
@@ -90,7 +90,7 @@ This portfolio demonstrates real SOC workflows including alert triage, threat hu
 **Findings:**  
 - Virus detected: virus "W32/Swrort.C!tr" uploaded 3791.exe.
 - Payloads: agent.php, 3791.exe
-- Initial access: Attacker gained Joomla administrator credentials via brute-force attack (100+ POST attempts) from 23.22.63.114.
+- Initial access: Attacker gained Joomla administrator credentials via brute-force attack (100+ POST attempts) from 23[.]22[.]63[.]114.
 - Execution chain：  agent.php --> php-cgi.exe --> cmd.exe --> 3791.exe
 - Attacker's IP address: 40[.]80[.]148[.]42; 23[.]22[.]63[.]114
 - Brute force for admin account at Joomla.
